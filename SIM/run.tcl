@@ -8,6 +8,8 @@ do compile.tcl
 ##################################### SV TB
 vsim -novopt SQRT.tb_sqrt_svl
 add wave -position insertpoint sim:/tb_sqrt_svl/*
+# add wave -position insertpoint  \
+# sim:/tb_sqrt_svl/#ublk#149220460#24/driver
 #####################################
 
 run 450 ns
