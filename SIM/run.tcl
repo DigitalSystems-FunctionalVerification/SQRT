@@ -12,5 +12,5 @@ add wave -position insertpoint sim:/tb_sqrt_svl/*
 # sim:/tb_sqrt_svl/#ublk#149220460#24/driver
 #####################################
 
-run 450 ns
+run 930 ns
 vdel -all -lib SQRT

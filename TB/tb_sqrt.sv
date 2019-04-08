@@ -24,43 +24,27 @@ module tb_sqrt_svl;
   Command_s           command;
   Command_s           commands[$];
 
+  Driver driver;    
+
   initial
   begin
 
-    // Driver driver;    
-    
     automatic logic               done = 1;             // Starts "done" and waits for a new command    
+    driver  = new(commands, transaction);
 
-    // driver  = new(commands, transaction);
+    driver.AddCommand('{1, 4});
+    driver.AddCommand('{1, 16});
 
-    commands.push_back('{1, 4});
-    commands.push_back('{1, 16});
+    driver.ExecuteCommands();
 
-    while (commands.size() < 1) begin end               // Waits for commands
-        
-    done = 0;                                           // Starts addressing received commands
-
-    while (!done)                                       // Stops computing command if there is no more commands or received a stop command (command.header ==0)
-    begin
-        command = commands.pop_front();                 // Gets next command
-        if (command.header == 1) begin                  // SQRT computing command
-            #70
-            transaction.value = command.value;          // Value to be computed
-            transaction.rst   = 1;                      // Control signal for start of SQRT operation
-            #350;
-            transaction.rst   = 0;
-        end else if (command.header == 0) begin         // Received stop command
-            done = 1;                                   // Breaks the "while"
-        end
-        if(commands.size() < 1) done  = 1;              // No more commands stored
-    end
   end
 
   always 
   begin
   
-    val <= transaction.value; 
-    rst <= transaction.rst;
+    val <= driver.transaction.value; 
+    rst <= driver.transaction.rst;
+
     clk <= 1; #10;
     clk <= 0; #10;
     

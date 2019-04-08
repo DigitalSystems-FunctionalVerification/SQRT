@@ -52,9 +52,11 @@ package Verification;
             begin
                 command = this.commands.pop_front();            // Gets next command
                 if (command.header == 1) begin                  // SQRT computing command
+                    #70
                     this.transaction.value  = command.value;    // Value to be computed
                     this.transaction.rst    = 1;                // Control signal for start of SQRT operation
-                    #70;
+                    #350;
+                    this.transaction.rst    = 0;
                 end else if (command.header == 0) begin         // Received stop command
                     done = 1;                                   // Breaks the "while"
                 end
