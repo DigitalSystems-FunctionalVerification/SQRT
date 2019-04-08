@@ -1,0 +1,7 @@
+*.wlf
+*_vmake
+*_info
+*_lib.qdb
+*_lib1_0.qdb
+*_lib1_0.qpg
+*_lib1_0.qtl
