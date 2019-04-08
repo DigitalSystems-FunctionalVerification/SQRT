@@ -1,7 +1,12 @@
 
 `timescale 1ns/1ns
 
+`include "../VV/Verification.sv"
 module tb_sqrt_svl;
+
+  import Verification::*;
+
+  Driver driver;
 
   //variable declarations
   logic clk, rst, eop;
