@@ -1,6 +1,6 @@
 package Verification;
 
-    typedef struct {
+    typedef struct {    
         
         int header;
         int value;
@@ -18,11 +18,6 @@ package Verification;
 
         Command_s           commands[$];
         DriverTransaction_s transaction;
-
-
-        // new
-        // function new();
-        // endfunction //new()
 
         // new
         function new(Command_s commands[$] = '{}, DriverTransaction_s transaction = '{0,0});

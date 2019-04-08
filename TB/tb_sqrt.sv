@@ -20,11 +20,10 @@ module tb_sqrt_svl;
     .sqrt(out)
   );  
 
+  Driver              driver;    
   DriverTransaction_s transaction = '{0, 1};
   Command_s           command;
   Command_s           commands[$];
-
-  Driver driver;    
 
   initial
   begin
@@ -32,8 +31,14 @@ module tb_sqrt_svl;
     automatic logic               done = 1;             // Starts "done" and waits for a new command    
     driver  = new(commands, transaction);
 
+    // "Agent"
     driver.AddCommand('{1, 4});
     driver.AddCommand('{1, 16});
+    driver.AddCommand('{1, 25});
+    driver.AddCommand('{1, 36});
+    driver.AddCommand('{1, 49});
+    driver.AddCommand('{1, 225});
+    driver.AddCommand('{0, 225});
 
     driver.ExecuteCommands();
 
