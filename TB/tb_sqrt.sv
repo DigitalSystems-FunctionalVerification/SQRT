@@ -34,6 +34,7 @@ module tb_sqrt_svl;
     // driver  = new(commands, transaction);
 
     commands.push_back('{1, 4});
+    commands.push_back('{1, 16});
 
     while (commands.size() < 1) begin end               // Waits for commands
         
@@ -46,28 +47,14 @@ module tb_sqrt_svl;
             #70
             transaction.value = command.value;          // Value to be computed
             transaction.rst   = 1;                      // Control signal for start of SQRT operation
+            #350;
+            transaction.rst   = 0;
         end else if (command.header == 0) begin         // Received stop command
             done = 1;                                   // Breaks the "while"
         end
         if(commands.size() < 1) done  = 1;              // No more commands stored
     end
   end
-  
-  // initial
-  // begin
-
-  //   val     <= transaction.value; 
-  //   rst     <= transaction.rst;
-
-  // end
-
-  // initial
-  // begin
-
-  //   val <= 4; rst <= 0; #70;
-  //   rst <= 1;
-
-  // end
 
   always 
   begin
