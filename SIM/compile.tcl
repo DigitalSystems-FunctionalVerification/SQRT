@@ -1,12 +1,12 @@
 vlib SQRT
 
-vlog -reportprogress 300 -work SQRT /home/darlan/Master/2019_1/VerificacaoFuncionalDeSistemasDigitais/SQRT/VV/Verification.sv
-vcom -reportprogress 300 -work SQRT /home/darlan/Master/2019_1/VerificacaoFuncionalDeSistemasDigitais/SQRT/RTL/sqrt.vhd
+vlog -reportprogress 300 -work SQRT VV/Verification.sv
+vcom -reportprogress 300 -work SQRT RTL/sqrt.vhd
 
 ##################################### VHDL TB
-# vcom -reportprogress 300 -work SQRT /home/darlan/Master/2019_1/VerificacaoFuncionalDeSistemasDigitais/SQRT/TB/tb_sqrt.vhd
+# vcom -reportprogress 300 -work SQRT TB/tb_sqrt.vhd
 #####################################
 
 ##################################### SV TB
-vlog -reportprogress 300 -work SQRT /home/darlan/Master/2019_1/VerificacaoFuncionalDeSistemasDigitais/SQRT/TB/tb_sqrt.sv
+vlog -reportprogress 300 -work SQRT TB/tb_sqrt.sv
 #####################################
